@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/gzip"
 )
 
 func indexHandler(c *gin.Context) {
@@ -14,6 +15,7 @@ func noHandler(c *gin.Context) {
 
 func main() {
 	router := gin.Default()
+	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.LoadHTMLGlob("./templates/*/*.tmpl")
 
 	router.Static("/static", "./static")

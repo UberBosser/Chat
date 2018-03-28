@@ -5,7 +5,7 @@ Gin + Infernojs = 💙
 ## Installation
 ```
 $ git clone https://github.com/UberBosser/GoTemplate.git [<dir>]
-$ go get github.com/gin-gonic/gin
+$ go get github.com/gin-gonic/gin github.com/gin-contrib/gzip
 $ cd [<dir>]
 $ yarn init && yarn
 ```
