@@ -1,17 +1,15 @@
-import { render, Component } from "inferno";
-import css from "../css/global.sass";
+import {render, Component} from "inferno";
 
-import Navbar from "../components/navbar.jsx";
+import Welcome from "../components/welcome.jsx";
+
+import "../css/global.sass";
 
 
 class Page extends Component {
     render() {
         return(
             <div>
-                <Navbar /> 
-                <div class="jumbotron">
-                    <h2 class="display-4">404: Page not found!</h2>
-                </div>
+                <Welcome>404: Page not found.</Welcome>
             </div>
         ) 
     }

@@ -1,14 +1,15 @@
-import { render, Component } from "inferno";
-import css from "../css/global.sass";
+import {render, Component} from "inferno";
 
-import Navbar from "../components/navbar.jsx";
+import Welcome from "../components/welcome.jsx";
+
+import css from "../css/global.sass";
 
 
 class Page extends Component {
     render() {
         return(
             <div>
-                <Navbar /> 
+                <Welcome>You are all set!</Welcome>
             </div>
         ) 
     }
