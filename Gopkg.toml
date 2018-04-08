@@ -24,6 +24,9 @@
 #   go-tests = true
 #   unused-packages = true
 
+[metadata.heroku]
+  root-package = "github.com/UberBosser/GoTemplate"
+  go-version = "go1.10"
 
 [[constraint]]
   branch = "master"
