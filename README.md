@@ -11,15 +11,15 @@ $ cd [<dir>]
 $ make init
 ```
 ## Commands
-`$ make serve` builds the go files and starts the server outputs to log.txt.  
+`$ make serve` builds the go files and starts the server, outputs to `log.txt`.  
 `$ make stop` stops the server.  
 `$ make build` alias to `$ yarn build`.  
 `$ make clean` cleans static `*.bundle.css` & `*.bundle.js`.  
 
 ## Template structure
 * `main.go` main Gin server.
-* `src` .jsx + .sass.
-* `src/components` contain components of the ui.
+* `src` `.jsx`, `.sass`, `.pngs`...
+* `src/components` contain components of the UI.
 * `src/containers` different web pages.
 * `static` webpacked `.css` and `.js`.
 * `templates/includes` Golang template "defines".
