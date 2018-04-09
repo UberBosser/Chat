@@ -14,7 +14,7 @@ $ make init
 `$ make serve` builds the go files and starts the server outputs to log.txt.  
 `$ make stop` stops the server.  
 `$ make build` alias to `$ yarn build`.  
-`$ make clean` cleans static `*.bundles.css` & `*.bundle.js`.  
+`$ make clean` cleans static `*.bundle.css` & `*.bundle.js`.  
 
 ## Template structure
 * `main.go` main Gin server.
