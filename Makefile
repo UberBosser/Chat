@@ -2,9 +2,15 @@ init:
 	@yarn
 	@yarn init
 
-run:
+build:
 	@yarn build
-	@go run *.go
+
+serve:
+	@go build
+	@./GoTemplate > log.txt 2>&1 &
+
+stop:
+	@pkill GoTemplate
 
 clean:
 	@rm -rf static/css/*.bundle.css
