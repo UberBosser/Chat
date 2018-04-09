@@ -15,6 +15,13 @@ module.exports = {
 
     module: {
         rules: [
+            {
+                resolve: {
+                    alias: {
+                        inferno: __dirname + "/node_modules/inferno/dist/index.dev.esm.js" 
+                    } 
+                }
+            },
             {            
                 test: /\.(js|jsx)$/,
                 loader: "babel-loader",
@@ -47,6 +54,11 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
         new MiniCssExtractPlugin({
             filename: "../css/[name].bundle.css",
         })
