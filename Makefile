@@ -6,7 +6,7 @@ build:
 	@yarn build
 
 serve:
-	@go build
+	@go build -o GoTemplate
 	@./GoTemplate > log.txt 2>&1 &
 
 stop:
@@ -15,6 +15,7 @@ stop:
 clean:
 	@rm -rf static/css/*.bundle.css
 	@rm -rf static/js/*.bundle.js
+	@rm -rf static/images/*.img.*
 
 install:
 	@yarn install

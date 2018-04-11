@@ -18,7 +18,7 @@ $ make init
 
 ## Template structure
 * `main.go` main Gin server.
-* `src` `.jsx`, `.sass`, `.pngs`...
+* `src` `.jsx`, `.sass`, `.png`...
 * `src/components` contain components of the UI.
 * `src/containers` different web pages.
 * `static` webpacked `.css` and `.js`.
