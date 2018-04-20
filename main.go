@@ -3,8 +3,6 @@ package main
 import (
 	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
-	godb "gopkg.in/gorethink/gorethink.v4"
-	"log"
 )
 
 func indexHandler(c *gin.Context) {
@@ -16,14 +14,6 @@ func noHandler(c *gin.Context) {
 }
 
 func main() {
-	session, err := godb.Connect(godb.ConnectOpts{
-		Address:  "localhost:28015",
-		Database: "chat",
-	})
-	if err != nil {
-		log.Println(err.Error())
-		return
-	}
 	router := gin.Default()
 	router.Use(gzip.Gzip(gzip.DefaultCompression))
 	router.LoadHTMLGlob("./templates/*/*.tmpl")
@@ -31,7 +21,8 @@ func main() {
 	router.Static("/static", "./static")
 	router.GET("/", indexHandler)
 
-	socketRouter := newSocketRouter(session)
+	socketRouter := newSocketRouter()
+	go socketRouter.SendAll()
 	router.GET("/socket", socketRouter.WebsocketHandler)
 	socketRouter.Handle("send message", sendMessage)
 
