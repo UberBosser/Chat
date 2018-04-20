@@ -2,6 +2,7 @@ import {render, Component} from "inferno";
 
 import Socket from "../utils/socket.jsx";
 
+import ErrorAlert from "../components/errorAlert.jsx";
 import Chat from "../components/chat.jsx";
 
 import css from "../css/global.sass";
@@ -12,7 +13,8 @@ class Page extends Component {
         super(props);
         this.state = {
             connected: false,
-            messages: []
+            messages: [],
+            errors: []
         } 
     }
     componentDidMount() {
@@ -20,18 +22,22 @@ class Page extends Component {
         socket.on("open", this.onOpen.bind(this));
         socket.on("close", this.onClose.bind(this));
         socket.on("receive message", this.receiveMessage.bind(this));
+        socket.on("error", this.onError.bind(this));
     }
     onOpen() {
         this.setState({
             connected: true
         });
-        console.log("connected to the socket!")
     }
     onClose() {
         this.setState({
             connected: false
         });
-        console.log("disconnected to the socket!") 
+    }
+    onError(error) {
+        this.setState({
+            errors:  [...this.state.errors, error]
+        }); 
     }
     sendMessage(message) {
         this.socket.emit("send message", message);
@@ -44,7 +50,14 @@ class Page extends Component {
     render() {
         return(
             <div class="container-fluid mt-2">
-                <Chat connected={this.state.connected} messages={this.state.messages} sendMessage={this.sendMessage.bind(this)}></Chat>
+                <ErrorAlert
+                    errors={this.state.errors}
+                />
+                <Chat
+                    connected={this.state.connected}
+                    messages={this.state.messages}
+                    sendMessage={this.sendMessage.bind(this)}
+                />
             </div>
         ) 
     }

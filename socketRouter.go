@@ -37,7 +37,7 @@ func (r *Router) FindHandler(code string) (Handler, bool) {
 	return handler, found
 }
 
-func (r *Router) websocketHandler(c *gin.Context) {
+func (r *Router) WebsocketHandler(c *gin.Context) {
 	conn, err := upgrader.Upgrade(c.Writer, c.Request, nil)
 	if err != nil {
 		c.Writer.WriteHeader(http.StatusInternalServerError)

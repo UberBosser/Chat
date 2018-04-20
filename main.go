@@ -32,7 +32,7 @@ func main() {
 	router.GET("/", indexHandler)
 
 	socketRouter := newSocketRouter(session)
-	router.GET("/socket", socketRouter.websocketHandler)
+	router.GET("/socket", socketRouter.WebsocketHandler)
 	socketRouter.Handle("send message", sendMessage)
 
 	router.NoRoute(noHandler)
