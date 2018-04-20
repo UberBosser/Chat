@@ -2,7 +2,7 @@ import {EventEmitter} from "events";
 
 
 class Socket {
-    constructor(ws = new WebSocket("wss://" + window.location.hostname + "/socket"), ee = new EventEmitter()) {
+    constructor(ws = new WebSocket(location.protocol.replace("http","ws") + "//" + location.host + "/socket"), ee = new EventEmitter()) {
         this.ws = ws;
         this.ee = ee;
         ws.onopen = this.open.bind(this);
